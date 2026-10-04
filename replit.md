@@ -1,6 +1,6 @@
-# [Project name]
+# Batch NO.9 Café Website
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A mobile-first website for Batch NO.9, a deli, coffee, and dessert cafe in Stanley, Alexandria.
 
 ## Run & Operate
 
@@ -22,19 +22,23 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/batch-no-9/` — public café website
+- `attached_assets/` — supplied Batch NO.9 logo and photography
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The site is informational; online ordering links directly to the supplied Talabat restaurant page.
+- Do not invent an exact street address or opening hours; only Stanley, Alexandria is confirmed.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Four public pages: Home, Menu, Beans, and Visit.
+- Customer-facing copy should use clear, easy English.
+- The menu displays prices in EGP and notes that prices exclude tax.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- All online-order actions should send visitors to the Talabat link in the website brief.
 
 ## Gotchas
 

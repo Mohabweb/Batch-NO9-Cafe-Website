@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Batch NO.9 — Deli, Coffee & Dessert"
+description = "A mobile-first website for Batch NO.9 in Stanley, Alexandria, with a searchable café menu, coffee origins, visit information, social links, and online ordering through Talabat."
+version = "1.0.0"
+id = "artifacts/batch-no-9"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25136
+
+[services.development]
+run = "pnpm --filter @workspace/batch-no-9 run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/batch-no-9", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/batch-no-9/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25136"
+BASE_PATH = "/"
