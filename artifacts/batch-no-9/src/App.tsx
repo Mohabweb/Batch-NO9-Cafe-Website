@@ -8,11 +8,11 @@ import { Route, Switch, useLocation, Link, Router as WouterRouter } from 'wouter
 import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, MapPin, Menu as MenuIcon, Search, X, Phone, Coffee } from 'lucide-react';
 import logo from '@assets/batch-no-9-logo.jpg';
 import duo from '@assets/cappuccino-brownie-duo.webp';
-import cloud9 from '@assets/generated_images/batch-no9-cloud-9-product.png';
-import pistachioDrink from '@assets/generated_images/batch-no9-cloud-pistachio.png';
-import spanishLatte from '@assets/generated_images/batch-no9-spanish-latte.png';
-import tiramisuLatte from '@assets/generated_images/batch-no9-tiramisu-latte.png';
-import matchaLatte from '@assets/generated_images/batch-no9-matcha-latte.png';
+import cloud9 from '@assets/generated_images/batch-no9-cloud-9-product.webp';
+import pistachioDrink from '@assets/generated_images/batch-no9-cloud-pistachio.webp';
+import spanishLatte from '@assets/generated_images/batch-no9-spanish-latte.webp';
+import tiramisuLatte from '@assets/generated_images/batch-no9-tiramisu-latte.webp';
+import matchaLatte from '@assets/generated_images/batch-no9-matcha-latte.webp';
 import counter from '@assets/cafe-counter.jpg';
 import art from '@assets/cafe-wall-art.jpg';
 import table from '@assets/cafe-table.jpg';
@@ -359,7 +359,13 @@ function SeoManager() {
     updateMeta('meta[name="twitter:title"]', page.title);
     updateMeta('meta[name="twitter:description"]', page.description);
     updateMeta('meta[name="twitter:image"]', imageUrl);
-    document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute('href', url);
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.append(canonical);
+    }
+    canonical.href = url;
   }, [location]);
   return null;
 }
