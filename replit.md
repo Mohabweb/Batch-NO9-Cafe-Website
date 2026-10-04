@@ -27,8 +27,9 @@ A mobile-first website for Batch NO.9, a deli, coffee, and dessert cafe in Stanl
 
 ## Architecture decisions
 
-- The site is informational; online ordering links directly to the supplied Talabat restaurant page.
-- Do not invent an exact street address or opening hours; only Stanley, Alexandria is confirmed.
+- The site is informational; all online ordering links use `https://www.talabat.com/egypt/restaurant/1123136/batch-no9?aid=7073`.
+- Only Stanley, Alexandria is confirmed as the location; do not invent an exact street address.
+- Confirmed opening hours are 7:00 AM–12:00 AM; do not infer which days these hours apply to.
 
 ## Product
 
@@ -38,7 +39,7 @@ A mobile-first website for Batch NO.9, a deli, coffee, and dessert cafe in Stanl
 
 ## User preferences
 
-- All online-order actions should send visitors to the Talabat link in the website brief.
+- All online-order actions should use the current Batch NO.9 Talabat restaurant link above.
 
 ## Gotchas
 

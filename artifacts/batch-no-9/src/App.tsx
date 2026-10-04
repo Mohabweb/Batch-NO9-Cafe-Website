@@ -8,6 +8,11 @@ import { Route, Switch, useLocation, Link, Router as WouterRouter } from 'wouter
 import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, MapPin, Menu as MenuIcon, Search, X, Phone, Coffee } from 'lucide-react';
 import logo from '@assets/batch-no-9-logo.jpg';
 import duo from '@assets/cappuccino-brownie-duo.webp';
+import cloud9 from '@assets/generated_images/batch-no9-cloud-9-product.png';
+import pistachioDrink from '@assets/generated_images/batch-no9-cloud-pistachio.png';
+import spanishLatte from '@assets/generated_images/batch-no9-spanish-latte.png';
+import tiramisuLatte from '@assets/generated_images/batch-no9-tiramisu-latte.png';
+import matchaLatte from '@assets/generated_images/batch-no9-matcha-latte.png';
 import counter from '@assets/cafe-counter.jpg';
 import art from '@assets/cafe-wall-art.jpg';
 import table from '@assets/cafe-table.jpg';
@@ -16,7 +21,7 @@ import windowPhoto from '@assets/cafe-window.jpg';
 import { useEffect } from 'react';
 
 const queryClient = new QueryClient();
-const TALABAT = 'https://www.talabat.com/egypt/restaurant/508173/country-hills-stanly?aid=7073';
+const TALABAT = 'https://www.talabat.com/egypt/restaurant/1123136/batch-no9?aid=7073';
 const PHONE = 'tel:+201106167614';
 const MAPS = 'https://www.google.com/maps/search/?api=1&query=Batch+NO.9+Stanley+Alexandria';
 const socials = [
@@ -113,12 +118,12 @@ const origins = [
   { name: 'Kenya', region: 'Nyeri', notes: 'Tangerine, peach, apricot, raspberry, honey', profile: 'Juicy acidity · Vibrant body', color: '#A8B52C', x: 58, y: 62 },
 ];
 const slides = [
-  { name: 'Cloud 9 Latte', tag: 'A little cloud, a lot of comfort', art: 'cloud' },
-  { name: 'Cloud Pistachio Latte', tag: 'Pistachio, espresso, soft foam', art: 'pistachio' },
-  { name: 'Spanish Latte', tag: 'Sweet, smooth and made to linger', art: 'spanish' },
-  { name: 'Tiramisu Iced Latte', tag: 'Coffee break meets dessert', art: 'tiramisu' },
-  { name: 'Matcha Latte', tag: 'Ceremonial matcha, your way', art: 'matcha' },
-  { name: 'Brownie + Cappuccino', tag: 'A duo that never disappoints', image: duo },
+  { name: 'Cloud 9 Latte', tag: 'A little cloud, a lot of comfort', art: 'cloud', image: cloud9, alt: 'Cloud 9 Latte in a clear Batch NO.9 bottle' },
+  { name: 'Cloud Pistachio Latte', tag: 'Pistachio, espresso, soft foam', art: 'pistachio', image: pistachioDrink, alt: 'Iced Cloud Pistachio Latte in a clear bottle' },
+  { name: 'Spanish Latte', tag: 'Sweet, smooth and made to linger', art: 'spanish', image: spanishLatte, alt: 'Iced Spanish Latte in a clear bottle' },
+  { name: 'Tiramisu Iced Latte', tag: 'Coffee break meets dessert', art: 'tiramisu', image: tiramisuLatte, alt: 'Tiramisu Iced Latte with creamy foam in a clear bottle' },
+  { name: 'Matcha Latte', tag: 'Ceremonial matcha, your way', art: 'matcha', image: matchaLatte, alt: 'Iced Matcha Latte in a clear bottle' },
+  { name: 'Brownie + Cappuccino', tag: 'A duo that never disappoints', image: duo, alt: 'Cappuccino and chocolate brownie at Batch NO.9' },
 ];
 
 function Header() {
@@ -147,7 +152,7 @@ function Header() {
 function Footer() {
   return <footer className="site-footer">
     <Link href="/" className="footer-brand">Batch NO.9</Link>
-    <span>Stanley, Alexandria · Hours: please call to confirm</span>
+    <span>Stanley, Alexandria · Hours: 7:00 AM–12:00 AM</span>
     <a href={PHONE}><Phone size={13} /> 011 06167614</a>
     <div className="social-row">{socials.map(s => <a className="social-link" href={s.url} target="_blank" rel="noreferrer" aria-label={s.label} key={s.label}>{s.short}</a>)}</div>
     <span>© Batch NO.9 · Prices exclude tax.</span>
@@ -180,7 +185,7 @@ function Home() {
         <span className="hero-count">{String(active + 1).padStart(2, '0')} / 06</span>
       </div>
       <div className={`hero-art ${slide.art ? `drink-art drink-art--${slide.art}` : 'hero-art--photo'}`}>
-        {slide.image ? <img key={slide.image} src={slide.image} alt="Cappuccino and chocolate brownie at Batch NO.9" /> : <DrinkIllustration name={slide.name} />}
+        <img key={slide.image} src={slide.image} alt={slide.alt} />
         <div className="hero-controls">
         <button className="round-control" onClick={() => step(-1)} aria-label="Previous featured item" data-testid="button-slide-previous"><ArrowLeft size={18} /></button>
         <button className="round-control" onClick={() => step(1)} aria-label="Next featured item" data-testid="button-slide-next"><ArrowRight size={18} /></button>
@@ -206,18 +211,10 @@ function Home() {
       <div className="origin-dots" role="img" aria-label="Dotted map showing our coffee bean origins" />
     </section>
     <section className="section visit-strip">
-      <div><span className="eyebrow">Your table is waiting</span><h3>Find us in Stanley, Alexandria.</h3><span>Hours may change. Please call to confirm.</span></div>
+      <div><span className="eyebrow">Your table is waiting</span><h3>Find us in Stanley, Alexandria.</h3><span>Hours: 7:00 AM–12:00 AM</span></div>
       <div className="hero-actions"><a href={MAPS} target="_blank" rel="noreferrer" className="button button-red">Open in maps <ArrowUpRight size={15} /></a><SocialLinks /></div>
     </section>
   </Shell>;
-}
-
-function DrinkIllustration({ name }: { name: string }) {
-  return <div className="drink-illustration" role="img" aria-label={`Illustration of a ${name}; a product photo is not available`}>
-    <span className="illustration-note">A LITTLE SOMETHING, MADE WITH CARE</span>
-    <div className="illustration-cup"><span className="cup-lid" /><span className="cup-foam" /><span className="cup-drink" /><span className="cup-mark">9</span><span className="cup-straw" /></div>
-    <span className="illustration-base">BATCH NO.9 · STANLEY</span>
-  </div>;
 }
 
 function SocialLinks() {
@@ -302,7 +299,7 @@ function VisitPage() {
     <section className="visit-layout">
       <article className="visit-card"><span className="eyebrow">Come find us</span><h2>Batch NO.9<br />Stanley Branch</h2>
         <div className="visit-detail"><strong><MapPin size={15} /> Location</strong><span>Stanley, Alexandria, Egypt</span></div>
-        <div className="visit-detail"><strong>Hours</strong><span>Please call us to confirm today's hours.</span></div>
+        <div className="visit-detail"><strong>Hours</strong><span>7:00 AM–12:00 AM</span></div>
         <div className="visit-detail"><strong><Phone size={15} /> Call us</strong><a href={PHONE}>011 06167614</a></div>
         <div className="hero-actions"><a className="button button-light" href={MAPS} target="_blank" rel="noreferrer">Open in Google Maps <ArrowUpRight size={16} /></a><a className="button button-glass" href={PHONE}>Call the cafe <Phone size={15} /></a></div>
       </article>
@@ -338,7 +335,7 @@ const pageMetadata: Record<string, { title: string; description: string }> = {
   },
   '/visit': {
     title: 'Visit Batch NO.9 in Stanley, Alexandria | Cafe',
-    description: 'Find Batch NO.9 in Stanley, Alexandria. Call to confirm today’s hours, get directions, and visit us for specialty coffee, deli favorites, and dessert.',
+    description: 'Visit Batch NO.9 in Stanley, Alexandria, from 7:00 AM to 12:00 AM for specialty coffee, deli favorites, and dessert.',
   },
 };
 

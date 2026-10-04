@@ -55,21 +55,8 @@ button,a{ -webkit-tap-highlight-color:transparent}
 .drink-art--spanish{background:radial-gradient(ellipse at 50% 46%,#dfa97866,transparent 48%),linear-gradient(145deg,#a4573e,#49221a)}
 .drink-art--tiramisu{background:radial-gradient(ellipse at 50% 46%,#c2926e66,transparent 48%),linear-gradient(145deg,#674035,#291a17)}
 .drink-art--matcha{background:radial-gradient(ellipse at 50% 46%,#bcc49b66,transparent 48%),linear-gradient(145deg,#6c7555,#2c2920)}
-.drink-illustration{position:absolute;inset:0;display:grid;place-items:center;color:#f0e6d4}
-.illustration-note,.illustration-base{position:absolute;font:700 8px 'Montserrat',sans-serif;letter-spacing:.2em;color:#f0e6d4ae;text-align:center}
-.illustration-note{top:18%}
-.illustration-base{bottom:12%}
-.illustration-cup{position:relative;width:43%;height:48%;min-width:138px;max-height:230px;border:2px solid #f0e6d4a8;border-top:0;border-radius:10px 10px 34px 34px;background:#f0e6d422;box-shadow:inset 0 -25px 35px #25151166,0 20px 30px #2515113a;overflow:visible;transform:perspective(400px) rotateX(-4deg)}
-.cup-lid{position:absolute;top:-8px;left:-5%;width:110%;height:14px;border-radius:50%;background:#e9d9c1;border:2px solid #d2bda0}
-.cup-foam{position:absolute;top:0;left:0;width:100%;height:33%;border-radius:50% 50% 20% 20%;background:radial-gradient(ellipse at 50% 70%,#a96f4b 0 3%,transparent 4%),radial-gradient(ellipse at 50% 40%,#f3e7d3 0 40%,#e5c9a8 69%,transparent 71%)}
-.cup-drink{position:absolute;top:19%;left:7%;width:86%;height:56%;border-radius:8px 8px 23px 23px;background:linear-gradient(90deg,#a76643,#e0b18a 45%,#935333);opacity:.75}
-.cup-mark{position:absolute;z-index:2;top:48%;left:50%;transform:translate(-50%,-50%);font:42px var(--app-font-serif);color:#f1dec7cc}
-.cup-straw{position:absolute;z-index:3;width:5px;height:45%;top:-35%;right:23%;transform:rotate(7deg);border-radius:9px;background:#e7d9c7}
-.drink-art--pistachio .cup-drink{background:linear-gradient(90deg,#87906a,#c4c59a 50%,#7f8660)}
-.drink-art--spanish .cup-drink{background:linear-gradient(90deg,#b87952,#e8c39d 50%,#a65c39)}
-.drink-art--tiramisu .cup-drink{background:linear-gradient(90deg,#76482f,#c29472 50%,#563323)}
-.drink-art--matcha .cup-drink{background:linear-gradient(90deg,#728254,#c0c69b 50%,#64764a)}
-.drink-art--tiramisu .cup-foam{background:radial-gradient(ellipse at 50% 70%,#7d4d35 0 4%,transparent 5%),radial-gradient(ellipse at 50% 40%,#f1dfc8 0 40%,#d2ad8b 69%,transparent 71%)}
+.drink-art:after{content:none}
+.drink-art img{position:relative;z-index:1;object-fit:contain;padding:18px 30px 28px;filter:drop-shadow(0 18px 24px #1f0d0980)}
 .hero-label{position:absolute;right:3%;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font:clamp(20px,3vw,40px) var(--app-font-serif);color:transparent;-webkit-text-stroke:1px #f0e6d9a0;letter-spacing:.08em}
 .hero-controls{position:absolute;right:9%;bottom:12%;z-index:3;display:flex;gap:10px}
 .round-control{width:46px;height:46px;border-radius:50%;border:1px solid #f0e6d499;background:#4b1c17a3;color:var(--cream);font-size:20px;cursor:pointer}
