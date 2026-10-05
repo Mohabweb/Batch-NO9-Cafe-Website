@@ -1,0 +1,1 @@
+- [GitHub push verification](github-push-verification.md) — check the actual remote head and commit ancestry after a push fails before retrying or force-pushing.
