@@ -1,0 +1,6 @@
+{
+  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "pnpm --filter @workspace/batch-no-9 run build",
+  "outputDirectory": "artifacts/batch-no-9/dist/public",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}

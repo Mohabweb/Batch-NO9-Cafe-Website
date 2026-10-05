@@ -1,0 +1,42 @@
+I want to deploy this project's frontend (artifacts/batch-no-9) to Vercel as a static site.
+The repo is a pnpm monorepo. The frontend is a pure static Vite + React + wouter app
+and does NOT call the api-server at all. Please make the following changes WITHOUT
+breaking the existing Replit setup (.replit, api-server, mockup-sandbox, lib/* must
+keep working as they are).
+
+1. Create `vercel.json` in the repo root with exactly this content:
+{
+  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "pnpm --filter @workspace/batch-no-9 run build",
+  "outputDirectory": "artifacts/batch-no-9/dist/public",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
+(The rewrite is needed because wouter routes like /menu, /beans, /visit must not 404 on refresh.)
+
+2. In the root package.json:
+   - Add a "packageManager" field with the exact pnpm version currently used in this
+     Repl (check with `pnpm --version`), e.g. "pnpm@10.x.x".
+   - Add "engines": { "node": ">=22" } so Vercel uses a Node version compatible with Vite 7.
+   - Do NOT change the existing scripts (build, typecheck, preinstall).
+
+3. In artifacts/batch-no-9/vite.config.ts:
+   - Make `@replit/vite-plugin-runtime-error-modal` load only when
+     process.env.NODE_ENV !== 'production' (use the same dynamic-import pattern already
+     used for cartographer and dev-banner), so the production build on Vercel does not
+     depend on any Replit-specific plugin.
+   - Keep BASE_PATH defaulting to '/' and PORT defaulting safely, so the build works
+     with no environment variables set.
+   - Keep outDir as dist/public.
+
+4. Make sure the frontend build does not require DATABASE_URL, PORT, BASE_PATH, or any
+   other environment variable, and that nothing in artifacts/batch-no-9/src imports from
+   @workspace/db or api-server.
+
+5. Verify locally by running:
+   pnpm install --frozen-lockfile
+   pnpm --filter @workspace/batch-no-9 run build
+   and confirm that artifacts/batch-no-9/dist/public/index.html exists and the build
+   completes with no errors. If pnpm-lock.yaml changes, tell me why.
+
+6. Do not touch .npmrc, pnpm-workspace.yaml (minimumReleaseAge, overrides, catalog),
+   or the api-server. When done, give me a short summary of every file you changed.
